@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -p "Author: " author
+read -p "Title: " title
+
+echo "Processing..."
+
+yt-dlp -q -x --audio-format mp3 --embed-thumbnail --output "$author - $title.mp3" "$1"
+id3v2 -a "$author" -t "$title" "./$author - $title.mp3"
+
+echo "Done."
